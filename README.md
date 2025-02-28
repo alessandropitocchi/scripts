@@ -3,6 +3,7 @@
 This repository contains simple Python scripts designed for learning and experimenting with Kubernetes. The scripts focus on automating tasks, managing Kubernetes resources, and interacting with clusters using the Kubernetes Python client (kubernetes library).
 
 🔹 What’s inside?
+
 Scripts for deploying and managing cluster resources
 Automation of common Kubernetes tasks
 Examples of interacting with the Kubernetes API
