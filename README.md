@@ -9,6 +9,7 @@ Examples of interacting with the Kubernetes API
 Useful utilities for troubleshooting and monitoring
 
 🎯 Goal
+
 The main objective is to deepen my understanding of Kubernetes while improving my Python skills through practical exercises and real-world examples.
 
 Feel free to explore, use, or contribute! 🚀
