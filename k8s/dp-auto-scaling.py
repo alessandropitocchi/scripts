@@ -1,7 +1,8 @@
 # script to auto scaled deployment to a specific number of replicas
 # Usage: python dp-auto-scaling.py <deployment-name> <replicas>
-# Example: python dp-auto-scaling.py my-deployment 3
+# Example: python dp-auto-scaling.py my-deployment 3 default
 
+import argparse
 from kubernetes import client, config
 
 def scale_dp(dp_name, replicas, namespace):
@@ -11,9 +12,12 @@ def scale_dp(dp_name, replicas, namespace):
     api_instance.patch_namespaced_deployment_scale(name=dp_name, namespace=namespace, body=body)
     print("Deployment scaled to %s replicas" % replicas)
 
-
-dp_name = input("Enter the deployment name: ")
-replicas = int(input("Enter the number of replicas: "))
-ns = input("Enter the namespace: ")
-
-scale_dp(dp_name, replicas, ns)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Scale a Kubernetes deployment.")
+    parser.add_argument("deployment_name", type=str, help="The name of the deployment to scale.")
+    parser.add_argument("replicas", type=int, help="The number of replicas to scale to.")
+    parser.add_argument("namespace", type=str, help="The namespace of the deployment.")
+    
+    args = parser.parse_args()
+    
+    scale_dp(args.deployment_name, args.replicas, args.namespace)

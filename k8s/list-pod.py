@@ -2,6 +2,7 @@
 # Usage: python list-pod.py <namespace>
 # Example: python list-pod.py default
 
+import sys
 from kubernetes import client, config
 
 def list_pods(ns):
@@ -12,5 +13,9 @@ def list_pods(ns):
     for pod in pods.items:
         print(f"Pod: {pod.metadata.name} | Status: {pod.status.phase}")
 
-ns = input("Enter the namespace: ")
-list_pods(ns)
+if len(sys.argv) != 2:
+    print("Usage: python list-pod.py <namespace>")
+    sys.exit(1)
+
+namespace = sys.argv[1]
+list_pods(namespace)
